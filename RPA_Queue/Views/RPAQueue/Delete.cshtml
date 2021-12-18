@@ -1,0 +1,105 @@
+﻿@model RPA_Queue.ViewModels.RPAQueueViewModel
+
+
+<div class="container">
+    <div class="row pb-2 ml-1">
+        <p>
+            <h3 class="text-info">Delete Project</h3>
+        </p>
+    </div>
+    <form method="post" asp-action="DeletePost">
+        <input asp-for="Id" hidden/>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="ProjectName">Project Name</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" asp-for="ProjectName" disabled type="text" name="ProjectName" id="projectname" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="CostCenter">Cost Center</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" asp-for="CostCenter" disabled type="number" min="0" name="CostCenter" id="costcenter" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="ProcessOwner">Process Owner</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" asp-for="ProcessOwner" disabled type="text" name="ProcessOwner" id="processowner" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="Account">Account</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" asp-for="Account" disabled type="text" name="Account" id="account" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="Note">Note</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" asp-for="Note" disabled type="text" name="Note" id="note" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="DevelopmentStatus">Development Status</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" asp-for="DevelopmentStatus" disabled type="text" name="DevelopmentStatus" id="devstatus" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="Schedule">Schedule</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" asp-for="Schedule" disabled type="text" name="Schedule" id="schedule" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="RunningTimes">Running Times</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" asp-for="RunningTimes" disabled type="text" name="RunningTimes" id="runningtimes" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="UsedApps">Used Applications</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" asp-for="UsedApps" disabled type="text" name="UsedApps" id="usedapps" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="Department">Department</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" asp-for="Department" disabled type="text" name="Department" id="department" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="Group">Group</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" asp-for="Group" disabled type="text" name="Group" id="group" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="LicenseType">License Type</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" asp-for="LicenseType" disabled type="text" name="LicenseType" id="licensetype" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="DevelopedOn">Developed On</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" asp-for="DevelopedOn" disabled type="date" name="DevelopedOn" id="developedon" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <button class="btn btn-danger" onclick="return confirm('Are you sure you want to delete project: @Model.ProjectName ?')">Delete</button>
+                <a class="btn-secondary ml-sm-3 btn" asp-action="Index">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>

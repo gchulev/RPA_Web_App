@@ -1,0 +1,67 @@
+﻿@model RPA_Queue.ViewModels.LoginViewModel
+<head>
+    <link rel="stylesheet" href="~/css/LoginForm.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login Page</title>
+</head>
+<body>
+    <!-- Main Content -->
+    <div class="container-fluid">
+        <div class="row main-content bg-success">
+            <div class="col-md-4 text-center company__info">
+                <span class="company__logo"><span class="fas fa-robot fa-4x"></span></span>
+                <p></p>
+                <h4 class="company_title">LHT Sofia RPA Queue</h4>
+            </div>
+            <div class="col-md-8 col-xs-12 col-sm-12 login_form ">
+                <div class="container-fluid">
+                    <div class="row">
+                        <h2>Log In</h2>
+                    </div>
+                    <div class="row text-center">
+                        <form control="" class="form-group" method="post" asp-action="Login">
+                            <div class="row">
+                                <input type="text" name="username" id="username" class="form__input" placeholder="Username" asp-for="UserName">
+                                <span asp-validation-for="UserName" class="text-danger"></span>
+                                @*@Html.ValidationMessageFor(x => x.UserName)*@
+                            </div>
+                            <div class="row">
+                                <!-- <span class="fa fa-lock"></span> -->
+                                <input type="password" name="password" id="password" class="form__input" placeholder="Password" asp-for="Password">
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                                @*@Html.ValidationMessageFor(x => x.Password)*@
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="custom-checkbox">
+                                        <label asp-for="RememberMe">
+                                            <input asp-for="RememberMe" />
+                                            @Html.DisplayNameFor(x => x.RememberMe)
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="text-danger">
+                                    @Html.ValidationSummary()
+                                </div>
+                            </div>
+                            <div class="row">
+                                <input type="submit" value="Login" class="btn">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <div class="container-fluid text-center footer">
+    </div>
+</body>
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

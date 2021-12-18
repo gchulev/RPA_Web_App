@@ -1,0 +1,27 @@
+﻿@model ErrorViewModel
+@{
+    ViewData["Title"] = "Error";
+}
+<div class="container fa-pull-left">
+    <h2 class="text-danger">An error occurred while processing your request.</h2>
+
+    @if (Model != null)
+    {
+        @if (Model.ShowRequestId)
+        {
+            <p>
+                <strong>Request ID:</strong> <code>@Model.RequestId</code>
+            </p>
+        }
+    }
+
+    <p>
+        <h5>ErrorViewModel is null!</h5>
+    </p>
+
+    <div class="row">
+        <a class="btn btn-primary" asp-action="Index" asp-controller="RPAQueue">Back</a>
+    </div>
+</div>
+
+

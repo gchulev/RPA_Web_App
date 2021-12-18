@@ -1,0 +1,162 @@
+﻿@model RPA_Queue.ViewModels.RPAQueueViewModel
+
+
+<div class="container">
+    <div class="row pb-2 ml-1">
+        <p>
+            <h3 class="text-info">Add new project</h3>
+        </p>
+    </div>
+    <form method="post" asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="ProjectName"></label>
+                    <div class="col-sm-6 pl-1">
+                        <input class="form-control" asp-for="ProjectName" type="text" name="ProjectName" id="projectname" />
+                        <span asp-validation-for="ProjectName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="CostCenter"></label>
+                    <div class="col-sm-6 pl-1">
+                        @*<input class="form-control" asp-for="CostCenter" readonly type="number" min="0" name="CostCenter" id="costcenter" />*@
+                        @*<span asp-validation-for="CostCenter" class="text-danger mt-2"></span>*@
+                        <select class="custom-select" name="CostCenter" asp-for="CostCenter" asp-items="@(new SelectList(Model.DropDownMenuItems.CostCenterItems))">
+                            <option disabled value=0>--------------------</option>
+                        </select>
+                        @*<span asp-validation-for="CostCenter" class="text-danger mt-2"></span>*@
+                    </div>
+
+                    <div class="col-sm-2 p-0">
+                        @*Empty Column*@
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 pr-1" asp-for="ProcessOwner"></label>
+                    <div class="col-sm-6 pl-1">
+                        <input class="form-control" asp-for="ProcessOwner" type="text" name="ProcessOwner" id="ProcessOwner" />
+                        <span asp-validation-for="ProcessOwner" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="Account"></label>
+                    <div class="col-sm-6 pl-1">
+                        <input class="form-control" type="text" name="Account" id="account" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="Note"></label>
+                    <div class="col-sm-6 pl-1">
+                        <input class="form-control" type="text" name="Note" id="note" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="Schedule"></label>
+                    <div class="col-sm-6 pl-1">
+                        <input class="form-control" type="text" name="Schedule" id="schedule" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="RunningTimes"></label>
+                    <div class="col-sm-6 pl-1">
+                        <input class="form-control" type="text" name="RunningTimes" id="runningtimes" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="UsedApps"></label>
+                    <div class="col-sm-6 pl-1">
+                        <input class="form-control" type="text" name="UsedApps" id="usedapps" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="DevelopmentStatus"></label>
+                    <div class="col-sm-6 pl-1">
+                        @*<input class="form-control" asp-for="DevelopmentStatus" type="text" readonly name="DevelopmentStatus" id="DevelopmentStatus" />*@
+                        @*<span asp-validation-for="DevelopmentStatus" class="text-danger"></span>*@
+                        <select class="custom-select" name="DevelopmentStatus" asp-for="DevelopmentStatus" asp-items="@(new SelectList(Model.DropDownMenuItems.DevelopmentStatus))">
+                            <option value="">--------------------</option>
+                        </select>
+                        <span asp-validation-for="DevelopmentStatus" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-sm-2 p-0">
+                        @* Empty Column *@
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="Department"></label>
+                    <div class="col-sm-6 pl-1">
+                        @*<input class="form-control" asp-for="Department" type="text" name="Department" readonly id="department" />*@
+                        @*<span asp-validation-for="Department" class="text-danger"></span>*@
+                        <select class="custom-select" name="Department" asp-for="Department" asp-items="@(new SelectList(Model.DropDownMenuItems.Department))">
+                            <option value="">--------------------</option>
+                        </select>
+                        <span asp-validation-for="Department" class="text-danger"></span>
+                    </div>
+                    <div class="col-sm-2 p-0">
+                        @*Empty Column*@
+                    </div>
+                </div>
+                <div class="form-group row ">
+                    <label class="col-sm-4" asp-for="Group"></label>
+                    <div class="col-sm-6 pl-1">
+                        @*<input class="form-control" asp-for="Group" readonly type="text" name="Group" id="group" />*@
+                        @*<span asp-validation-for="Group" class="text-danger"></span>*@
+                        <select class="custom-select" name="Group" asp-for="Group" asp-items="@(new SelectList(Model.DropDownMenuItems.GroupItems))">
+                            <option value="">--------------------</option>
+                        </select>
+                        <span asp-validation-for="Group" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-sm-2 p-0">
+                        @* Empty Column *@
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="LicenseType"></label>
+                    <div class="col-sm-6 pl-1">
+                        <select class="custom-select" name="LicenseType" asp-for="LicenseType" asp-items="@(new SelectList(Model.DropDownMenuItems.LicenseTypeItems))">
+                            <option value="">--------------------</option>
+                        </select>
+                        <span asp-validation-for="LicenseType" class="text-danger"></span>
+                        @*<input class="form-control" asp-for="LicenseType" readonly type="text" name="LicenseType" id="licensetype" />*@
+                        @*<span asp-validation-for="LicenseType" class="text-danger"></span>*@
+                    </div>
+                    
+                    <div class="col-sm-2 p-0">
+                        @* Empty Column *@
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="DevelopedOn"></label>
+                    <div class="col-sm-6 pl-1">
+                        <input class="form-control" asp-for="DevelopedOn" type="date" name="DevelopedOn" id="developedon" value="YYYY-mm-dd"/>
+                        <span asp-validation-for="DevelopedOn" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <button class="btn-primary btn" type="submit" name="btn-submit">Submit</button>
+                <a class="btn-danger ml-sm-3 btn" asp-action="Index">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

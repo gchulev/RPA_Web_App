@@ -1,0 +1,130 @@
+﻿@model RPA_Queue.ViewModels.RPAQueueViewModel
+
+
+<div class="container">
+    <div class="row pb-2 ml-1">
+        <p>
+            <h3 class="text-info">Edit Project Details</h3>
+        </p>
+    </div>
+    <form method="post" asp-action="EditPost">
+        <input asp-for="Id" hidden />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="ProjectName">Project Name</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" asp-for="ProjectName" type="text" name="ProjectName" id="projectname" />
+                        <span asp-validation-for="ProjectName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="CostCenter">Cost Center</label>
+                    <div class="col-sm-8">
+                        <select class="custom-select" name="CostCenter" asp-for="CostCenter" asp-items="@(new SelectList(Model.DropDownMenuItems.CostCenterItems))">
+                            <option disabled value=0>--------------------</option>
+                        </select>
+                        @*<span asp-validation-for="CostCenter" class="text-danger mt-2"></span>*@
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="ProcessOwner">Process Owner</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" asp-for="ProcessOwner" type="text" name="ProcessOwner" id="processowner" />
+                        <span asp-validation-for="ProcessOwner" class="text-danger mt-2"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="Account">Account</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" asp-for="Account" type="text" name="Account" id="account" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="Note">Note</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" asp-for="Note" type="text" name="Note" id="note" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="DevelopmentStatus">Development Status</label>
+                    <div class="col-sm-8">
+                        <select class="custom-select" name="DevelopmentStatus" asp-for="DevelopmentStatus" asp-items="@(new SelectList(Model.DropDownMenuItems.DevelopmentStatus))">
+                            <option disabled value="">--------------------</option>
+                        </select>
+                        <span asp-validation-for="DevelopmentStatus" class="text-danger mt-2"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="Schedule">Schedule</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" asp-for="Schedule" type="text" name="Schedule" id="schedule" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="RunningTimes">Running Times</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" asp-for="RunningTimes" type="text" name="RunningTimes" id="runningtimes" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="UsedApps">Used Applications</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" asp-for="UsedApps" type="text" name="UsedApps" id="usedapps" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="Department">Department</label>
+                    <div class="col-sm-8">
+                        <select class="custom-select" name="Department" asp-for="Department" asp-items="@(new SelectList(Model.DropDownMenuItems.Department))">
+                            <option disabled value="">--------------------</option>
+                        </select>
+                        <span asp-validation-for="Department" class="text-danger mt-2"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="Group"></label>
+                    <div class="col-sm-8">
+                        <select class="custom-select" name="Group" asp-for="Group" asp-items="@(new SelectList(Model.DropDownMenuItems.GroupItems))">
+                            <option disabled value="">--------------------</option>
+                        </select>
+                        <span asp-validation-for="Group" class="text-danger mt-2"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="LicenseType">License Type</label>
+                    <div class="col-sm-8">
+                        <select class="custom-select" name="LicenseType" asp-for="LicenseType" asp-items="@(new SelectList(Model.DropDownMenuItems.LicenseTypeItems))">
+                            <option disabled value="">--------------------</option>
+                        </select>
+                        <span asp-validation-for="LicenseType" class="text-danger mt-2"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4" asp-for="DevelopedOn">Developed On</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" asp-for="DevelopedOn" type="date" name="DevelopedOn" id="developedon" />
+                        <span asp-validation-for="DevelopedOn" class="text-danger mt-2"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <button class="btn-primary btn" type="submit">Submit</button>
+                <a class="btn-danger ml-sm-3 btn" asp-action="Index" Id="cancel-btn">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

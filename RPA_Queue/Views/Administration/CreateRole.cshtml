@@ -1,0 +1,54 @@
+﻿@model RPA_Queue.ViewModels.CreateRoleViewModel 
+
+
+<h1>Create New Role</h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-2">
+        <form method="post" class="">
+            <div class="form-group">
+                <label asp-for="RoleName"></label>
+                <input asp-for="RoleName" class="form-control" />
+                <span asp-validation-for="RoleName" class="text-danger"></span>
+            </div>
+            @if (ViewBag.RoleCreationResult == "1")
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    Role "@ViewBag.RoleName.Trim()" was created successfully!
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            }
+
+            @if (ViewBag.RoleCreationResult == "2")
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    Failed to create role!
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            }
+
+            @if (ViewBag.RoleCreationResult == "3")
+            {
+                <div class="alert alert-primary alert-dismissible show fade" role="alert">
+                    Role "@ViewBag.RoleName.Trim()" already exists!
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            }
+            <button class="btn btn-primary" type="submit">Create Role</button>
+            <a class="btn btn-primary" asp-action="ListRoles" asp-controller="Administration">Back</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
