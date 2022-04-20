@@ -26,7 +26,7 @@ namespace RPA_Queue.Controllers
         [HttpGet]
         public IActionResult CreateRole()
         {
-            return View();
+            return View(new CreateRoleViewModel());
         }
 
         [HttpPost]
@@ -35,21 +35,18 @@ namespace RPA_Queue.Controllers
             if (ModelState.IsValid)
             {
                 string returnCode = await _roleManagementService.CreateRoleAsync(createRoleViewModel.RoleName);
-                ViewBag.RoleCreationResult = returnCode;
-                ViewBag.RoleName = createRoleViewModel.RoleName;
+                createRoleViewModel.ReturnCode = returnCode;
 
                 //Using return code to mark the different states of the response, 1 - Success, 2 - Failure, 3 - Already exists.
                 switch (returnCode)
                 {
                     case "1":
                         ModelState.Clear();
-                        createRoleViewModel.RoleName = string.Empty;
                         return RedirectToAction("ListRoles", "Administration");
                     case "2":
                         return View(createRoleViewModel);
                     case "3":
                         ModelState.Clear();
-                        createRoleViewModel.RoleName = string.Empty;
                         return View(createRoleViewModel);
                     default:
                         break;

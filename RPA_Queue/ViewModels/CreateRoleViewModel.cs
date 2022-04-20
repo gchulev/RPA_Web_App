@@ -7,5 +7,6 @@ namespace RPA_Queue.ViewModels
         [Required]
         [Display(Name = "Role Name")]
         public string RoleName { get; set; }
+        public string ReturnCode { get; set; }
     }
 }

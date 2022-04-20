@@ -12,17 +12,17 @@
                 <input asp-for="RoleName" class="form-control" />
                 <span asp-validation-for="RoleName" class="text-danger"></span>
             </div>
-            @if (ViewBag.RoleCreationResult == "1")
+            @if (Model.ReturnCode == "1")
             {
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    Role "@ViewBag.RoleName.Trim()" was created successfully!
+                    Role "@Model.RoleName.Trim()" was created successfully!
                     <button type="button" class="close" data-dismiss="alert" aria-label="close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
             }
 
-            @if (ViewBag.RoleCreationResult == "2")
+            @if (Model.ReturnCode == "2")
             {
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     Failed to create role!
@@ -32,10 +32,10 @@
                 </div>
             }
 
-            @if (ViewBag.RoleCreationResult == "3")
+            @if (Model.ReturnCode == "3")
             {
                 <div class="alert alert-primary alert-dismissible show fade" role="alert">
-                    Role "@ViewBag.RoleName.Trim()" already exists!
+                    Role "@Model.RoleName.Trim()" already exists!
                     <button type="button" class="close" data-dismiss="alert" aria-label="close">
                         <span aria-hidden="true">&times;</span>
                     </button>
